@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, TextInput, Button, FlatList, TouchableOpacity, Alert } from "react-native";
+import FileUpload from "../utils/FileInput"; // Composant d'upload de fichier
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { homeStyle } from "../styles/styles";
 import Footer from "../components/Footer";
@@ -62,7 +63,7 @@ const HomeScreen: React.FC = () => {
       {
         text: "OK",
         onPress: () => {
-          const updatedNotes = notes.filter(note => note.id !== id);
+          const updatedNotes = notes.filter((note) => note.id !== id);
           setNotes(updatedNotes);
           saveNotes(updatedNotes);
         },
@@ -92,7 +93,20 @@ const HomeScreen: React.FC = () => {
           value={inputText}
           onChangeText={setInputText}
         />
-        <Gap size={10} />
+
+        {/* Utilisation correcte du composant FileUpload */}
+        <View style={{ marginVertical: 10 }}>
+          <FileUpload onFileSelected={(fileName) => {
+            const newNote: Note = {
+              id: Date.now().toString(),
+              text: fileName,
+            };
+            const updatedNotes = [newNote, ...notes];
+            setNotes(updatedNotes);
+            saveNotes(updatedNotes);
+          }} />
+        </View>
+
         <Button title="Ajouter" onPress={addNote} />
 
         <Gap size={20} />
@@ -120,7 +134,8 @@ const HomeScreen: React.FC = () => {
           />
         )}
       </View>
-      <Footer copyright={'2025, By Mael Developpement, Light Note, All rights reserved'} />
+
+      <Footer copyright="2025, By Mael Developpement, Light Note, All rights reserved" />
     </View>
   );
 };
