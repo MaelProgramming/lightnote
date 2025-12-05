@@ -14,7 +14,7 @@ const Header: React.FC<HeaderProps> = ({title = "Light Note"}) => {
         <View style={headerStyle.container}>
             <Text style={headerStyle.text}>{title}</Text>
             <Gap size={60}></Gap>
-            <Button title="Click Me" onPress={() => {showAlertMsg("Home Screen Alert Test", "This is an home screen page")}}></Button>
+            <Button title="About this app" onPress={() => {showAlertMsg("About this app", "This application is made with React Native and Android NDK 26.1")}}></Button>
 
         </View>
     )

@@ -13,8 +13,15 @@ interface HeaderStyle {
   text: TextStyle;
 }
 
+interface FooterStyle {
+  container: ViewStyle;
+  text: TextStyle;
+}
+
+
 const colors = {
   background: '#000',
+  footerBackground: '#1f4287',
   headerBackground: '#111',
   textPrimary: '#fff',
   textHeader: '#f00',
@@ -72,4 +79,21 @@ const headerStyle = StyleSheet.create<HeaderStyle>({
   },
 });
 
-export { homeStyle, headerStyle, colors };
+const footerStyle = StyleSheet.create<FooterStyle>({
+  container: {
+    backgroundColor: colors.footerBackground,
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 20,
+    justifyContent: 'space-between',
+  },
+  text: {
+    fontFamily: 'Cochin',
+    fontSize: 23,
+    color: '#0000',
+    textAlign: 'center',
+    fontStyle: 'italic',
+  }
+})
+
+export { homeStyle, headerStyle, colors, footerStyle };

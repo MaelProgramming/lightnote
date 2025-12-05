@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { View, Text, TextInput, Button, FlatList, TouchableOpacity, Alert } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { homeStyle } from "../styles/styles";
+import Footer from "../components/Footer";
 import { Gap } from "../utils/Gap";
 import Header from "../components/Header";
 
@@ -119,6 +120,7 @@ const HomeScreen: React.FC = () => {
           />
         )}
       </View>
+      <Footer copyright={'2025, By Mael Developpement, Light Note, All rights reserved'} />
     </View>
   );
 };
